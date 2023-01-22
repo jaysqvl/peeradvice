@@ -67,58 +67,9 @@
                 <label style="font-size: 20px">Student</label>
             </div>
             <a href="connectStudent">Connect</a>
-            <!-- <a href="appointmentStudent">Appointments</a> -->
             <a href="/">Log Out</a>
         </div>
     </div>
-
-
-
-
-    <!-- <script>
-        // Get the form and the submit button
-        var form = document.getElementById("form");
-        var submit = document.getElementById("submit");
-
-        // Initialize Firebase
-        var firebaseConfig = {
-            // your configuration here
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        var db = firebase.firestore();
-
-        // Listen for the form's submit event
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            // Get the user's input
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var yearLevel = document.getElementById("yearLevel").value;
-            var studentId = document.getElementById("studentId").value;
-
-            // Get the current user
-            var user = firebase.auth().currentUser;
-
-            if (user) {
-                // Save the user's information to Firestore
-                db.collection("users").doc(user.uid).set({
-                    name: name,
-                    email: email,
-                    yearLevel: yearLevel,
-                    studentId: studentId
-                }).then(function () {
-                    console.log("User information saved!");
-                }).catch(function (error) {
-                    console.error("Error saving user information: ", error);
-                });
-            } else {
-                // The user is not signed in, redirect to the login page
-                window.location.href = "index.html";
-            }
-        });
-    </script> -->
 </body>
 
 </html>
