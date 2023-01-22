@@ -1,11 +1,11 @@
 import os
-import traceback
 
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 
 import dotenv
 import psycopg2
+import psycopg2.extras
 
 dotenv.load_dotenv()
 
@@ -24,14 +24,24 @@ def getAdvisor():
     email = request.args.get('email', '')
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
     cur.execute('SELECT * FROM advisors WHERE uid = %s', (uid,))
     data = cur.fetchone()
 
     if not data:
         cur.execute('INSERT INTO advisors (uid, name, email) VALUES (%s, %s, %s)', (uid, name, email))
-        data = [uid, name, None, None, None, None, None, None, email]
+        data = {
+            "uid": uid,
+            "name": name,
+            "degree": None,
+            "major": None,
+            "minor": None,
+            "year_level": None,
+            "calendly_link": None,
+            "bio": None,
+            "email": email,
+        }
 
     cur.close()
     conn.commit()
@@ -39,15 +49,15 @@ def getAdvisor():
     print(data)
 
     data = {
-        "uid": data[0],
-        "name": data[1],
-        "degree": data[2],
-        "major": data[3],
-        "minor": data[4],
-        "year_level": data[5],
-        "calendly_link": data[6],
-        "bio": data[7],
-        "email": data[8],
+        "uid": data['uid'],
+        "name": data['name'],
+        "degree": data['degree'],
+        "major": data['major'],
+        "minor": data['minor'],
+        "year_level": data['year_level'],
+        "calendly_link": data['calendly_link'],
+        "bio": data['bio'],
+        "email": data['email'],
     }
 
     return render_template('advisor.html', data=data)
@@ -57,8 +67,7 @@ def getAllAdvisors():
     advisors = []
 
     conn = get_db_connection()
-    cur = conn.cursor()
-
+    cur = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
     cur.execute('SELECT * FROM advisors')
     data = cur.fetchone() or []
@@ -80,28 +89,37 @@ def getStudent():
     email = request.args.get('email', '')
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
     cur.execute('SELECT * FROM students WHERE uid = %s', (uid,))
     data = cur.fetchone()
 
     if not data:
         cur.execute('INSERT INTO students (uid, name, email) VALUES (%s, %s, %s)', (uid, name, email))
-        data = [uid, name, email, None, None, None, None]
+        data = {
+            "uid": uid,
+            "name": name,
+            "degree": None,
+            "major": None,
+            "minor": None,
+            "year_level": None,
+            "email": email,
+        }
 
     cur.close()
     conn.commit()
     conn.close()
 
     data = {
-        "uid": data[0],
-        "name": data[1],
-        "degree": data[2],
-        "major": data[3],
-        "minor": data[4],
-        "year_level": data[5],
-        "email": data[6],
+        "uid": data['uid'],
+        "name": data['name'],
+        "degree": data['degree'],
+        "major": data['major'],
+        "minor": data['minor'],
+        "year_level": data['year_level'],
+        "email": data['email'],
     }
+
 
     return render_template('student.html', data=data)
 
