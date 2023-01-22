@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Ubuntu:wght@300&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="advisor.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/advisor.css') }}">
     <title>Advisor Webpage</title>
 </head>
 
@@ -23,37 +23,37 @@
         <form id="form">
             <div>
                 <label>Name:</label>
-                <input type="text" id="name" class="white-text">
+                <input type="text" id="name" class="white-text" placeholder="{{ data['name'] }}">
             </div>
 
             <div>
                 <label>Degree:</label>
-                <input type="text" id="degree">
+                <input type="text" id="degree" placeholder="{{ data['degree'] or '' }}">
             </div>
 
             <div>
                 <label>Major:</label>
-                <input type="text" id="major">
+                <input type="text" id="major" placeholder="{{ data['major'] or '' }}">
             </div>
 
             <div>
                 <label>Minor:</label>
-                <input type="text" id="minor">
+                <input type="text" id="minor" placeholder="{{ data['minor'] or '' }}">
             </div>
 
             <div>
                 <label>Year:</label>
-                <input type="text" id="yearLevel">
+                <input type="text" id="yearLevel" placeholder="{{ data['year_level'] or '' }}">
             </div>
 
             <div>
                 <label>Contact:</label>
-                <input type="text" id="yearLevel">
+                <input type="text" id="contact" placeholder="{{ data['email'] }}">
             </div>
 
             <div>
                 <label>Bio:</label>
-                <input type="text" id="yearLevel">
+                <input type="text" id="bio" placeholder="{{ data['bio'] or ''}}">
             </div>
 
             <div>
@@ -85,7 +85,7 @@
                     <label>Advisor</label>
                 </div>
                 <a href="connectAdvisor">Appointments</a>
-                <a href="index">Log Out</a>
+                <a href="/">Log Out</a>
             </div>
         </form>
 

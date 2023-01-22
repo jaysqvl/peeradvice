@@ -20,6 +20,8 @@ def get_db_connection():
 @app.route('/advisor')
 def getAdvisor():
     uid = request.args.get('uid', '')
+    name = request.args.get('name', '')
+    email = request.args.get('email', '')
 
     conn = get_db_connection()
     cur = conn.cursor()
@@ -27,13 +29,11 @@ def getAdvisor():
     cur.execute('SELECT * FROM advisors WHERE uid = %s', (uid,))
     data = cur.fetchone()
 
-    cur.close()
-    conn.close()
-
     if not data:
-        return 'bad request!', 400
+        cur.execute('INSERT INTO advisors (uid, name, email) VALUES (%s, %s, %s)', (uid, name, email))
+        data = [uid, name, None, None, None, None, None, None, email]
 
-    response = jsonify({
+    data = {
         "uid": data[0],
         "name": data[1],
         "degree": data[2],
@@ -41,10 +41,11 @@ def getAdvisor():
         "minor": data[4],
         "year_level": data[5],
         "calendly_link": data[6],
-        "bio": data[7]
-    })
+        "bio": data[7],
+        "email": data[8],
+    }
 
-    return response
+    return render_template('advisor.html', data=data)
 
 @app.route('/connectAdvisors')
 def getAllAdvisors():
@@ -90,14 +91,27 @@ def getStudent():
     data = {
         "uid": data[0],
         "name": data[1],
-        "email": data[2],
-        "degree": data[3],
-        "major": data[4],
-        "minor": data[5],
-        "year_level": data[6],
+        "degree": data[2],
+        "major": data[3],
+        "minor": data[4],
+        "year_level": data[5],
+        "email": data[6],
     }
 
     return render_template('student.html', data=data)
+
+@app.route('/connectAdvisor')
+def connectAdvisor():
+    return render_template('connectAdvisor.html')
+
+@app.route('/connectStudent')
+def connectStudent():
+    return render_template('connectStudent.html')
+
+@app.route('/appointmentStudent')
+def appointmentStudent():
+    return render_template('appointmentStudent.html')
+
 
 @app.route("/")
 def home():
