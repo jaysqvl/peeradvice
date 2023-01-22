@@ -36,6 +36,7 @@ def getAdvisor():
     cur.close()
     conn.commit()
     conn.close()
+    print(data)
 
     data = {
         "uid": data[0],

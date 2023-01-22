@@ -57,12 +57,17 @@
             </div>
 
             <div>
+                <label>calendly link:</label>
+                <input type="text" id="calendly_link" placeholder="{{ data['calendly_link'] or ''}}">
+            </div>
+
+            <div>
                 <button type="edit" id="edit">Edit</button>
             </div>
 
             <!-- Calendly inline widget begin -->
                     <div class="calendly-inline-widget" style="height: 500px;"
-                data-url="https://calendly.com/nima-motieifard/30min"             ></div>
+                data-url="{{ data['calendly_link'] or ''}}"             ></div>
                     
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     <!-- Calendly inline widget end -->
