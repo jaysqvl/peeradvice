@@ -46,19 +46,6 @@ def getAdvisor():
     cur.close()
     conn.commit()
     conn.close()
-    print(data)
-
-    data = {
-        "uid": data['uid'],
-        "name": data['name'],
-        "degree": data['degree'],
-        "major": data['major'],
-        "minor": data['minor'],
-        "year_level": data['year_level'],
-        "calendly_link": data['calendly_link'],
-        "bio": data['bio'],
-        "email": data['email'],
-    }
 
     return render_template('advisor.html', data=data)
 
@@ -133,17 +120,6 @@ def getStudent():
     cur.close()
     conn.commit()
     conn.close()
-
-    data = {
-        "uid": data['uid'],
-        "name": data['name'],
-        "degree": data['degree'],
-        "major": data['major'],
-        "minor": data['minor'],
-        "year_level": data['year_level'],
-        "email": data['email'],
-    }
-
 
     return render_template('student.html', data=data)
 
