@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Ubuntu:wght@300&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="advisor.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/advisor.css') }}">
     <title>Student Connect Webpage</title>
 </head>
 
@@ -34,9 +34,9 @@
                     <label>peerAdvise</label>
                     <label>Student</label>
                 </div>
-                <a href="student.html">Home</a>
-                <a href="appointmentStudent.html">Appointments</a>
-                <a href="logOut.html">Log Out</a>
+                <a href="student">Home</a>
+                <a href="appointmentStudent">Appointments</a>
+                <a href="logOut">Log Out</a>
             </div>
         </form>
 

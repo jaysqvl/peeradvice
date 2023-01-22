@@ -8,7 +8,8 @@ signInBtnStudent.addEventListener("click", function () {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // User is authenticated, redirect to page 1
-        window.location.href = "student.html";
+        // window.console.log("student?uid=" + result.user.uid + '&name=' + result.user.displayName + '&email=' + result.user.email);
+        window.location.href = "student?uid=" + result.user.uid + '&name=' + result.user.displayName + '&email=' + result.user.email;
     }).catch(function (error) {
         // Handle errors
         console.error(error);
@@ -21,7 +22,7 @@ signInBtnAdvisor.addEventListener("click", function () {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // User is authenticated, redirect to page 2
-        window.location.href = "advisor.html";
+        window.location.href = "advisor";
     }).catch(function (error) {
         // Handle errors
         console.error(error);

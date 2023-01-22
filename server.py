@@ -1,7 +1,7 @@
 import os
 import traceback
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 
 import dotenv
@@ -70,6 +70,8 @@ def getAllAdvisors():
 @app.route('/student')
 def getStudent():
     uid = request.args.get('uid', '')
+    name = request.args.get('name', '')
+    email = request.args.get('email', '')
 
     conn = get_db_connection()
     cur = conn.cursor()
@@ -77,26 +79,29 @@ def getStudent():
     cur.execute('SELECT * FROM students WHERE uid = %s', (uid,))
     data = cur.fetchone()
 
+    if not data:
+        cur.execute('INSERT INTO students (uid, name, email) VALUES (%s, %s, %s)', (uid, name, email))
+        data = [uid, name, email, None, None, None, None]
+
     cur.close()
+    conn.commit()
     conn.close()
 
-    if not data:
-        return 'bad request', 400
-
-    response = jsonify({
+    data = {
         "uid": data[0],
         "name": data[1],
-        "degree": data[2],
-        "major": data[3],
-        "minor": data[4],
-        "year_level": data[5],
-    })
+        "email": data[2],
+        "degree": data[3],
+        "major": data[4],
+        "minor": data[5],
+        "year_level": data[6],
+    }
 
-    return response
+    return render_template('student.html', data=data)
 
 @app.route("/")
-def homeRoute():
-    return "Hello World!"
+def home():
+    return render_template('index.html')
 
 
 def main():
