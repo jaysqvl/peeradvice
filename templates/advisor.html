@@ -23,43 +23,47 @@
         <form id="form" action="/editadvisor" method="post">
             <input type="text" id="uid" name="uid" class="white-text" value="{{ data['uid'] }}" hidden>
             <div>
-                <label>Name:</label>
+                <label style="font-size: 30px">Home</label>
+            </div>
+            <div>
+
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Name:</label>
                 <input type="text" id="name" name="name" class="white-text" value="{{ data['name'] }}">
             </div>
 
             <div>
-                <label>Degree:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Degree:</label>
                 <input type="text" id="degree" name="degree" value="{{ data['degree'] or '' }}">
             </div>
 
             <div>
-                <label>Major:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Major:</label>
                 <input type="text" id="major" name="major" value="{{ data['major'] or '' }}">
             </div>
 
             <div>
-                <label>Minor:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Minor:</label>
                 <input type="text" id="minor" name="minor" value="{{ data['minor'] or '' }}">
             </div>
 
             <div>
-                <label>Year:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Year:</label>
                 <input type="number" id="year_level" name="year_level" value="{{ data['year_level'] or 0 }}" min="0"
                     max="4">
             </div>
 
             <div>
-                <label>Contact:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Contact:</label>
                 <input type="text" id="email" name="email" value="{{ data['email'] }}">
             </div>
 
             <div>
-                <label>Bio:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Bio:</label>
                 <input type="textarea" id="bio" name="bio" value="{{ data['bio'] or ''}}">
             </div>
 
             <div>
-                <label>calendly link:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Calendly Link:</label>
                 <input type="text" id="calendly_link" name="calendly_link" value="{{ data['calendly_link'] or ''}}">
             </div>
 
@@ -73,22 +77,12 @@
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         <!-- Calendly inline widget end -->
 
-        <div>
-            <label>Appointments</label>
-        </div>
 
-        <div>
-            <label>Upcoming:</label>
-        </div>
-
-        <div>
-            <label>History:</label>
-        </div>
 
         <div class="sidebar">
             <div class="flex-container" style="display: flex; align-items: center;">
-                <label>peerAdvise</label>
-                <label>Advisor</label>
+                <label style="font-size: 25px">peerAdvise</label>
+                <label style="font-size: 20px">Advisor</label>
             </div>
             <!-- <a href="connectAdvisor">Appointments</a> -->
             <a href="/">Log Out</a>

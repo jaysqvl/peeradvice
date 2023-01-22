@@ -5,8 +5,10 @@
 
 #main-content {
     position: relative;
-    margin-left: 250px; /* Adjust this value to match the width of your sidebar */
+    margin-left: 250px;
+    /* Adjust this value to match the width of your sidebar */
     font-family: "Montserrat", "sans-serif";
+    font-weight: 1000;
 }
 
 #form div {
@@ -15,17 +17,21 @@
 
 #form label {
     text-align: right;
-    width: 120px; /* adjust this value as needed */
+    width: 120px;
+    /* adjust this value as needed */
     font-size: 1.2em;
-    display: inline-block; /* this will make the label display on one line */
+    display: inline-block;
+    /* this will make the label display on one line */
 }
 
 #form input {
-    width: 180px; /* adjust this value as needed */
+    width: 180px;
+    /* adjust this value as needed */
     padding: 10px;
-    border: 2px solid #ccc;
+    border: 2px solid #ff4c68;
     border-radius: 5px;
-    margin-left: 10px; /* adjust this value as needed */
+    margin-left: 10px;
+    /* adjust this value as needed */
 }
 
 #form input:focus {
@@ -35,10 +41,13 @@
 #form button {
     background-color: #6b4caf;
     color: #fff;
-    padding: 10px 20px;
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 280px;
+    margin-top: 30px;
+    font-size: 20px;
 }
 
 #form button:hover {
@@ -55,39 +64,55 @@ label {
     color: rgb(0, 0, 0);
 }
 
-input[type="text"]:hover, input[type="email"]:hover {
+input[type="text"]:hover,
+input[type="email"]:hover {
     border: 2px solid #000;
     border-radius: 5px;
     box-shadow: 0 0 5px #000;
 }
 
 .sidebar {
-    position: fixed; /* This will make the sidebar stay in place even when the user scrolls */
+    position: fixed;
+    /* This will make the sidebar stay in place even when the user scrolls */
     top: 0;
     bottom: 0;
     left: 0;
-    width: 200px; /* Adjust this to control the width of the sidebar */
-    background-color: #ff4c68;
+    width: 200px;
+    /* Adjust this to control the width of the sidebar */
+    background-color: #f35656e4;
     padding: 20px;
     font-family: "Montserrat", "sans-serif";
 }
 
 .sidebar a {
-    color: #fff; /* This will change the color of the links in the sidebar to white */
-    text-decoration: none; /* This will remove the underline from the links in the sidebar */
-    display: block; /* This will make the links take up the full width of their container */
-    padding: 10px 0; /* This will add some padding to the top and bottom of the links */
-    text-align: center; /* This will center the text within the links */
+    color: #fff;
+    /* This will change the color of the links in the sidebar to white */
+    text-decoration: none;
+    /* This will remove the underline from the links in the sidebar */
+    display: block;
+    /* This will make the links take up the full width of their container */
+    padding: 10px 0;
+    /* This will add some padding to the top and bottom of the links */
+    text-align: center;
+    /* This will center the text within the links */
     font-family: sans-serif;
 }
 
 .sidebar a:hover {
-    background-color: rgba(255, 255, 255, 0.375); /* This will change the background color of the links when hovered over */
-    color: #1e79a0; /* This will change the color of the text when hovered over */
+    background-color: rgba(255, 255, 255, 0.375);
+    /* This will change the background color of the links when hovered over */
+    color: #1e79a0;
+    /* This will change the color of the text when hovered over */
 }
 
 .flex-container {
     display: flex;
     align-items: center;
-    flex-direction: column; /* this will make the flex items vertical */
+    flex-direction: column;
+    /* this will make the flex items vertical */
+}
+
+body {
+    background-image: url(/static/ubc_background.jpg);
+
 }

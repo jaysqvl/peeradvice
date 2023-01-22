@@ -1,5 +1,5 @@
 body {
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Montserratf", Times, serif;
     text-align: center;
 }
 
@@ -11,7 +11,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Times New Roman", Times, serif;
+    font-family: "sans-serif", Times, serif;
 
 }
 
@@ -51,7 +51,7 @@ p {
 
 
 .container-fluid {
-    padding: 3% 15% 7%;
+    padding: 7% 15% 7%;
 }
 
 

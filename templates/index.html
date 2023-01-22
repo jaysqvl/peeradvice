@@ -76,7 +76,7 @@
 
             <!-- Nav Bar -->
 
-            <nav class="navbar navbar-expand-lg navbar-dark">
+            <!-- <nav class="navbar navbar-expand-lg navbar-dark">
                 <a class="navbar-brand" href=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -96,7 +96,7 @@
                         </li>
                     </ul>
                 </div>
-            </nav>
+            </nav> -->
 
             <!-- Title -->
 
@@ -123,54 +123,66 @@
 
     <!-- Features -->
 
-    <div class="letra">
+
+    <section id="features">
         <center>
-            <section id="features">
-                <h2>Why peerAdvise?</h2>
+            <div class="letra">
+                <h2 style="font-family: sans-serif;">Why peerAdvise?</h2>
                 <div class="row">
                     <div class="feature-box col-lg-4">
                         <i class="fas fa-check-circle fa-4x fas fa-solid fa-check pink"></i>
 
 
-                        <h3 class="feature-title">Fast</h3>
+                        <h3 class="feature-title" style="font-family: sans-serif;">Fast Advising</h3>
 
                     </div>
 
                     <div class="feature-box col-lg-4">
                         <i class="fas fa-check-circle fa-4x fas fa-solid fa-check pink"></i>
-                        <h3 class="feature-title">Easy</h3>
+                        <h3 class="feature-title" style="font-family: sans-serif;">Easy Access</h3>
                     </div>
 
                     <div class="feature-box col-lg-4">
                         <i class="fas fa-check-circle fa-4x fas fa-solid fa-check pink"></i>
-                        <h3 class="feature-title">Reliable</h3>
+                        <h3 class="feature-title" style="font-family: sans-serif;">Reliable Service</h3>
                     </div>
                 </div>
 
-                <div class="feature-box col-lg-4">
+            </div>
+        </center>
+    </section>
+
+
+    <!-- <div class="feature-box col-lg-4">
                     <i class="fas fa-face-sad-tear fa-check-circle fa-4x fas fa-solid pink"></i>
                     <h3 class="feature-title">Cost-Effective</h3>
-                </div>
+                </div> -->
 
-    </div>
-    </section>
-    </center>
-    </div>
+
+
 
     <section id="title">
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <h4 class="description big-heading"> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Tenetur nostrum provident</h4>
+                    <h4 class="description big-heading" style="font-size: 45px"> "It seems everyone at (the) advising
+                        office
+                        is so busy and (they) really
+                        don’t
+                        care about the students anymore, all they are
+                        interested in is to answer your questions as quick as possible (and) then ask you to leave.😐”
+                        <br> ~
+                        Reddit User:
+                        <a href="https://www.reddit.com/r/UBC/comments/bznu0j/why_are_advising_offices_so_unhelpful/"
+                            target="blank">jackmorrison76</a>
+                    </h4>
                 </div>
 
                 <div class="col-lg-6 ttgg">
-                    <img class="title-imgage" src=" " alt="bitomoji">
+                    <img class="title-imgage" src="{{ url_for('static',filename='Im_lost.png') }}" </div>
                 </div>
             </div>
-        </div>
     </section>
 
 

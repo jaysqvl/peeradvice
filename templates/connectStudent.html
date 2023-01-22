@@ -15,6 +15,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Ubuntu:wght@300&display=swap"
         rel="stylesheet">
 
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet"> -->
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/advisor.css') }}">
     <title>Student Connect Webpage</title>
 </head>
@@ -24,19 +28,20 @@
     <div id="main-content">
         <form id="form">
             <div>
-                <label>Connect</label>
+                <label style="font-size: 30px">Connect</label>
             </div>
 
             <div>
-                <label>Advisors:</label>
+                <label style="background-color:#f9f4f4f6; border-radius: 10px;">Advisors:</label>
             </div>
 
             {% for advisor in advisors %}
-            <div class="card">
+            <div class="card" style="background-color:#f9f4f4d7; border-radius: 10px; color:rgb(0, 0, 0)">
                 <h5 class="card-header">{{ advisor['name'] }}</h5>
                 <div class="card-body">
-                    <p class="card-text">Degree: {{ advisor['degree'] or 'N/A'}}</p>
-                    <p class="card-text">Major: {{ advisor['major'] or 'N/A'}}</p>
+                    <p class="card-text">Degree: {{ advisor['degree']
+                        or 'N/A'}}</p>
+                    <p class=" card-text">Major: {{ advisor['major'] or 'N/A'}}</p>
                     <p class="card-text">Minor: {{ advisor['minor'] or 'N/A'}}</p>
                     <p class="card-text">Year Level: {{ advisor['year_level'] or 'N/A'}}</p>
                     <p class="card-title">Email: {{ advisor['email'] }}</p>
