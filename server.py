@@ -62,6 +62,30 @@ def getAdvisor():
 
     return render_template('advisor.html', data=data)
 
+def modifyAdvisorDBEntry(uid, name, degree, major, minor, year_level, calendly_link, bio, email):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("""UPDATE advisors SET name = %s, degree = %s, major = %s, minor = %s, 
+                year_level = %s, calendly_link = %s, bio = %s, email = %s WHERE uid = %s""", 
+                (name, degree, major, minor, year_level, calendly_link, bio, email, uid))
+
+    cur.close()
+    conn.commit()
+    conn.close()
+
+def modifyStudentDBEntry(uid, name, degree, major, minor, year_level, email):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("""UPDATE advisors SET name = %s, degree = %s, major = %s, minor = %s, 
+                year_level = %s, email = %s WHERE uid = %s""", 
+                (name, degree, major, minor, year_level, email, uid))
+
+    cur.close()
+    conn.commit()
+    conn.close()
+
 @app.route('/connectAdvisors')
 def getAllAdvisors():
     advisors = []
