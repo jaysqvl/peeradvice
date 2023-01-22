@@ -12,6 +12,7 @@ The peerAdvice concept provides exactly that in a peer-to-peer connection with s
 4. Meet-up and discuss!
 
 ## Demonstration
+[![Watch the video]](https://youtu.be/_7WZNNuexCQ)
 
 
 ## Installation Instructions
