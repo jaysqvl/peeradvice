@@ -1,21 +1,40 @@
+import os
 import traceback
+
 from flask import Flask, jsonify, request
 from model import calc, scrape
 from flask_cors import CORS
 
+import dotenv
+import psycopg2
+
+dotenv.load_dotenv()
+
 app = Flask(__name__)
 CORS(app)
 
-class Calc():
-    BLAH = "test"
+def get_db_connection():
+    conn = psycopg2.connect(os.environ('DATABASE_URL'))
+    return conn
 
-class Scraped():
-    BLAHH = "test"
 
 # immediately when you get to this domain
 @app.route('/advisor')
 def getAdvisor():
-    data = []
+    uid = request.args.get('uid', '')
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute('SELECT * FROM advisors WHERE uid = %s', uid)
+    try:
+        data = cur.fetchone()
+    except:
+        # error
+        pass
+
+    cur.close()
+    conn.close()
 
     response = jsonify({
         "uid": data[0],
@@ -34,23 +53,27 @@ def getAdvisor():
 def getAllAdvisors():
     advisors = []
 
-    for i in db:
-        for d in i:
-            response = jsonify({
-            "uid": data[0],
-            "name": data[1],
-            "degree": data[2],
-            "major": data[3],
-            "minor": data[4],
-            "year_level": data[5],
-            "calendly_link": data[6],
-            "bio": data[7]
-            })
-        advisors.append(i)
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute('SELECT * FROM advisors')
+    try:
+        data = cur.fetchall()
+    except:
+        # error
+        pass
+
+    cur.close()
+    conn.close()
+
+    for advisor in data:
+        advisors.append(advisor)
+
+    response = jsonify(advisors)
 
     response.headers.add('Access-Control-Allow-Origin', '*')
 
-    return advisors
+    return response
 
 @app.route('/submit')
 def getCalc():
