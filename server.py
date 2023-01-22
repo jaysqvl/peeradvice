@@ -33,6 +33,10 @@ def getAdvisor():
         cur.execute('INSERT INTO advisors (uid, name, email) VALUES (%s, %s, %s)', (uid, name, email))
         data = [uid, name, None, None, None, None, None, None, email]
 
+    cur.close()
+    conn.commit()
+    conn.close()
+
     data = {
         "uid": data[0],
         "name": data[1],
