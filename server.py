@@ -13,25 +13,19 @@ class Scraped():
     BLAHH = "test"
 
 # immediately when you get to this domain
-@app.route('/webscrape')
-def getScrape():
-    try:
-        print("inside /webscrape")
-        url_to_scrape = request.args.get('url')
-        print("grabbed url_to_scrape", url_to_scrape)
-        data = scrape.start_scrape(url_to_scrape)
-        print("got data", data)
-    except:
-        traceback.print_exc()
-        print("Error processing, are you sure this is a valid url?")
-        return "Error processing, are you sure this is a valid url?"
-    
+@app.route('/advisor')
+def getAdvisor():
+    data = []
+
     response = jsonify({
-        "cloth_type": data[0],
-        "brand": data[1],
-        "materials": data[2],
-        "num_washes": data[3],
-        "weight_grams": data[4]
+        "uid": data[0],
+        "name": data[1],
+        "degree": data[2],
+        "major": data[3],
+        "minor": data[4],
+        "year_level": data[5],
+        "calendly_link": data[6],
+        "bio": data[7]
     })
 
     response.headers.add('Access-Control-Allow-Origin', '*')
