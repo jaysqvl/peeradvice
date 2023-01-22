@@ -49,6 +49,7 @@ def getAdvisor():
 
     return render_template('advisor.html', data=data)
 
+@app.route('/editadvisor', methods=['POST'])
 def modifyAdvisorDBEntry(uid, name, degree, major, minor, year_level, calendly_link, bio, email):
     conn = get_db_connection()
     cur = conn.cursor()
@@ -61,6 +62,7 @@ def modifyAdvisorDBEntry(uid, name, degree, major, minor, year_level, calendly_l
     conn.commit()
     conn.close()
 
+@app.route('/editstudent', methods=['POST'])
 def modifyStudentDBEntry(uid, name, degree, major, minor, year_level, email):
     conn = get_db_connection()
     cur = conn.cursor()
@@ -135,11 +137,9 @@ def connectStudent():
 def appointmentStudent():
     return render_template('appointmentStudent.html')
 
-
 @app.route("/")
 def home():
     return render_template('index.html')
-
 
 def main():
     return "Hello World!"
