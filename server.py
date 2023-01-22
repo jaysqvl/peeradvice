@@ -47,9 +47,9 @@ def getAdvisor():
         "bio": data[7]
     })
 
-    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@app.route('/connectAdvisors')
 def getAllAdvisors():
     advisors = []
 
@@ -70,8 +70,6 @@ def getAllAdvisors():
         advisors.append(advisor)
 
     response = jsonify(advisors)
-
-    response.headers.add('Access-Control-Allow-Origin', '*')
 
     return response
 
