@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, render_template, redirect
 from flask_cors import CORS
 
 import dotenv
@@ -57,12 +57,14 @@ def modifyAdvisorDBEntry():
     cur.execute("""UPDATE advisors SET name = %s, degree = %s, major = %s, minor = %s, 
                 year_level = %s, calendly_link = %s, bio = %s, email = %s WHERE uid = %s""", 
                 (request.form.get("name"), request.form.get("degree"), request.form.get("major"), 
-                request.form.get("minor"), request.form.get("year_level"), request.form.get("calendly_link"), 
+                request.form.get("minor"), request.form.get("year_level", type=int), request.form.get("calendly_link"), 
                 request.form.get("bio"), request.form.get("email"), request.form.get("uid")))
 
     cur.close()
     conn.commit()
     conn.close()
+
+    return redirect(f'/advisor?uid={request.form.get("uid")}&name={request.form.get("name")}&email={request.form.get("email")}')
 
 @app.route('/editstudent', methods=['POST'])
 def modifyStudentDBEntry():
@@ -71,13 +73,15 @@ def modifyStudentDBEntry():
     
     cur.execute("""UPDATE students SET name = %s, degree = %s, major = %s, minor = %s, 
                 year_level = %s, email = %s WHERE uid = %s""", 
-                (request.form.get("name"), request.form.get("degree"), request.form.get("major"), 
-                request.form.get("minor"), request.form.get("year_level"), 
+                (request.form.get("name"), request.form.get("degree"), request.form.get("major"),
+                request.form.get("minor"), request.form.get("year_level", type=int),
                 request.form.get("email"), request.form.get("uid")))
 
     cur.close()
     conn.commit()
     conn.close()
+
+    return redirect(f'/student?uid={request.form.get("uid")}&name={request.form.get("name")}&email={request.form.get("email")}')
 
 def getAllAdvisors():
     advisors = []
