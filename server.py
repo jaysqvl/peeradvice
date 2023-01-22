@@ -79,7 +79,6 @@ def modifyStudentDBEntry():
     conn.commit()
     conn.close()
 
-@app.route('/connectAdvisors')
 def getAllAdvisors():
     advisors = []
 
@@ -87,7 +86,7 @@ def getAllAdvisors():
     cur = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
     cur.execute('SELECT * FROM advisors')
-    data = cur.fetchone() or []
+    data = cur.fetchall() or []
 
     cur.close()
     conn.close()
@@ -95,9 +94,7 @@ def getAllAdvisors():
     for advisor in data:
         advisors.append(advisor)
 
-    response = jsonify(advisors)
-
-    return response
+    return advisors
 
 @app.route('/student')
 def getStudent():
@@ -135,7 +132,8 @@ def connectAdvisor():
 
 @app.route('/connectStudent')
 def connectStudent():
-    return render_template('connectStudent.html')
+    advisors = getAllAdvisors()
+    return render_template('connectStudent.html', advisors=advisors)
 
 @app.route('/appointmentStudent')
 def appointmentStudent():

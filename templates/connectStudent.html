@@ -29,6 +29,10 @@
                 <label>Advisors:</label>
             </div>
 
+            {% for advisor in advisors %}
+            {{ advisor['name'] }} <br>
+            {% endfor %}
+
             <div class="sidebar">
                 <div class="flex-container" style="display: flex; align-items: center;">
                     <label>peerAdvise</label>
