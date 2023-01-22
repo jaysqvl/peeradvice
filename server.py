@@ -73,6 +73,34 @@ def getAllAdvisors():
 
     return response
 
+@app.route('/student')
+def getStudent():
+    uid = request.args.get('uid', '')
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute('SELECT * FROM students WHERE uid = %s', uid)
+    try:
+        data = cur.fetchone()
+    except:
+        # error
+        pass
+
+    cur.close()
+    conn.close()
+
+    response = jsonify({
+        "uid": data[0],
+        "name": data[1],
+        "degree": data[2],
+        "major": data[3],
+        "minor": data[4],
+        "year_level": data[5],
+    })
+
+    return response
+
 @app.route('/submit')
 def getCalc():
     try:
