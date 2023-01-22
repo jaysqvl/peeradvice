@@ -50,26 +50,30 @@ def getAdvisor():
     return render_template('advisor.html', data=data)
 
 @app.route('/editadvisor', methods=['POST'])
-def modifyAdvisorDBEntry(uid, name, degree, major, minor, year_level, calendly_link, bio, email):
+def modifyAdvisorDBEntry():
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute("""UPDATE advisors SET name = %s, degree = %s, major = %s, minor = %s, 
                 year_level = %s, calendly_link = %s, bio = %s, email = %s WHERE uid = %s""", 
-                (name, degree, major, minor, year_level, calendly_link, bio, email, uid))
+                (request.form.get("name"), request.form.get("degree"), request.form.get("major"), 
+                request.form.get("minor"), request.form.get("year_level"), request.form.get("calendly_link"), 
+                request.form.get("bio"), request.form.get("email"), request.form.get("uid")))
 
     cur.close()
     conn.commit()
     conn.close()
 
 @app.route('/editstudent', methods=['POST'])
-def modifyStudentDBEntry(uid, name, degree, major, minor, year_level, email):
+def modifyStudentDBEntry():
     conn = get_db_connection()
     cur = conn.cursor()
-
-    cur.execute("""UPDATE advisors SET name = %s, degree = %s, major = %s, minor = %s, 
+    
+    cur.execute("""UPDATE students SET name = %s, degree = %s, major = %s, minor = %s, 
                 year_level = %s, email = %s WHERE uid = %s""", 
-                (name, degree, major, minor, year_level, email, uid))
+                (request.form.get("name"), request.form.get("degree"), request.form.get("major"), 
+                request.form.get("minor"), request.form.get("year_level"), 
+                request.form.get("email"), request.form.get("uid")))
 
     cur.close()
     conn.commit()
