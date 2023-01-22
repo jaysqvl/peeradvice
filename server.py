@@ -2,7 +2,6 @@ import os
 import traceback
 
 from flask import Flask, jsonify, request
-from model import calc, scrape
 from flask_cors import CORS
 
 import dotenv
@@ -16,7 +15,6 @@ CORS(app)
 def get_db_connection():
     conn = psycopg2.connect(os.environ('DATABASE_URL'))
     return conn
-
 
 # immediately when you get to this domain
 @app.route('/advisor')
