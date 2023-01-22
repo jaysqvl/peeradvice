@@ -1,7 +1,7 @@
 # 🏫 peerAdvice
-**Contributors:** Shariq Hassan, Sujal Bolia, Nima Motieifard, Jay Esquivel Jr
+**Contributors:** Shariq Imran Hassan, Sujal Bolia, Nima Motieifard, Jay Esquivel Jr
 
-Couldn't find what you were looking for on the UBC Calendar? Looking for consultation, advice, or just a different perspective on your academic situation?
+Couldn't find what you were looking for on the UBC webpage or with UBC advisors? Looking for consultation, advice, or just a different perspective on your academic situation?
 
 The peerAdvice concept provides exactly that in a peer-to-peer connection with someone who truly understands you.
 
