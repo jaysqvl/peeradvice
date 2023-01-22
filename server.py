@@ -101,37 +101,6 @@ def getStudent():
 
     return response
 
-@app.route('/submit')
-def getCalc():
-    try:
-        calc_brand = request.args.get('brand')
-        print(calc_brand)
-        calc_cloth_type = request.args.get('cloth_type')
-        print(calc_cloth_type)
-        calc_material_one = request.args.get('materialone')
-        print(calc_material_one)
-        calc_material_two = request.args.get('materialtwo')
-        print(calc_material_two)
-        calc_num_washes = request.args.get('num_washes')
-        print(calc_num_washes)
-
-        calc_weight = request.args.get('weight')
-        print(calc_weight)
-
-        calc_data = calc.start_calc(calc_brand, calc_cloth_type, calc_material_one, calc_material_two, calc_num_washes, calc_weight)
-        print(calc_data)
-
-    except:
-        print("Error processing, check data submitted")
-        return "Error processing, check data submitted"
-
-    response = jsonify({
-        "sustainability_rating": calc_data[0],
-        "fabric_quality": calc_data[1],
-        "num_washes": calc_data[2],
-    })
-    return response
-
 @app.route("/")
 def homeRoute():
     return "Hello World!"
