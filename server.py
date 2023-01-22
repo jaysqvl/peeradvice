@@ -31,6 +31,27 @@ def getAdvisor():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+def getAllAdvisors():
+    advisors = []
+
+    for i in db:
+        for d in i:
+            response = jsonify({
+            "uid": data[0],
+            "name": data[1],
+            "degree": data[2],
+            "major": data[3],
+            "minor": data[4],
+            "year_level": data[5],
+            "calendly_link": data[6],
+            "bio": data[7]
+            })
+        advisors.append(i)
+
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return advisors
+
 @app.route('/submit')
 def getCalc():
     try:
@@ -60,8 +81,6 @@ def getCalc():
         "fabric_quality": calc_data[1],
         "num_washes": calc_data[2],
     })
-
-    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 @app.route("/")
