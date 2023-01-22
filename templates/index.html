@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+
+    <!--  Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/2265e24f03.js" crossorigin="anonymous"></script>
+
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+    <!--                        FIREBASE STUFF -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBHxmCapEHoQvOSZMr6RU1R-20LTX8FEbA",
+            authDomain: "rent-parking-hackathon.firebaseapp.com",
+            projectId: "rent-parking-hackathon",
+            storageBucket: "rent-parking-hackathon.appspot.com",
+            messagingSenderId: "616748787107",
+            appId: "1:616748787107:web:d03feda60df79f60c32616",
+            measurementId: "G-REE1YK5B2F"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="app.js" defer></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
+
+
+    <!-- <link rel="icon" type="image/png" href="{% static "portfolio/Bitomoji_70 copy.png" %}"> -->
+    <title>peerAdvise</title>
+    <link rel="icon" type="image/png" href="laptop_reading.png">
+</head>
+
+<body>
+
+    <section id="title">
+
+        <div class="container-fluid">
+
+            <!-- Nav Bar -->
+
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href=" " style="color: black">v</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=" " style="color: black">v</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=" " style="color: black">v</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Title -->
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="description big-heading"> peerAdvise </h1>
+                    <button type="button" class="btn btn-dark btn-lg nav-button" id="signInBtnStudent"><i
+                            class="far fa-clipboard"></i>
+                        Sign In As Student</button>
+
+                    <button type="button" class="btn btn-outline-light btn-lg" id="signInBtnAdvisor"><i
+                            class="far fa-bookmark"></i>
+                        Sign In As Advisor</button>
+                </div>
+
+                <div class="col-lg-6 ttgg">
+                    <img class="title-imgage" src="laptop_reading.png" alt="bitomoji">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features -->
+
+    <div class="letra">
+        <center>
+            <section id="features">
+                <h2>Why peerAdvise?</h2>
+                <div class="row">
+                    <div class="feature-box col-lg-4">
+                        <i class="fas fa-check-circle fa-4x fas fa-solid fa-check pink"></i>
+
+
+                        <h3 class="feature-title">Fast</h3>
+
+                    </div>
+
+                    <div class="feature-box col-lg-4">
+                        <i class="fas fa-check-circle fa-4x fas fa-solid fa-check pink"></i>
+                        <h3 class="feature-title">Easy</h3>
+                    </div>
+
+                    <div class="feature-box col-lg-4">
+                        <i class="fas fa-check-circle fa-4x fas fa-solid fa-check pink"></i>
+                        <h3 class="feature-title">Reliable</h3>
+                    </div>
+                </div>
+
+                <div class="feature-box col-lg-4">
+                    <i class="fas fa-face-sad-tear fa-check-circle fa-4x fas fa-solid pink"></i>
+                    <h3 class="feature-title">Cost-Effective</h3>
+                </div>
+
+    </div>
+    </section>
+    </center>
+    </div>
+
+    <section id="title">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 class="description big-heading"> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Tenetur nostrum provident</h4>
+                </div>
+
+                <div class="col-lg-6 ttgg">
+                    <img class="title-imgage" src=" " alt="bitomoji">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <!-- 
+    <div class="footer">
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2023 Copyright:
+                <a class="text-reset fw-bold" href="http://nimamot.pythonanywhere.com">blah blah </a>
+            </div>
+        </footer>
+    </div> -->
+</body>
+
+</html>

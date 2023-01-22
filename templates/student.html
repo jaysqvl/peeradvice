@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-auth.js"></script>
+
+    <!--  Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="advisor.css">
+    <title>Student Webpage</title>
+</head>
+
+<body>
+    <div id="main-content">
+        <form id="form">
+            <div>
+                <label>Name:</label>
+                <input type="text" id="name" class="white-text">
+            </div>
+
+            <div>
+                <label>Degree:</label>
+                <input type="text" id="degree">
+            </div>
+
+            <div>
+                <label>Major:</label>
+                <input type="text" id="major">
+            </div>
+
+            <div>
+                <label>Minor:</label>
+                <input type="text" id="minor">
+            </div>
+
+            <div>
+                <label>Year::</label>
+                <input type="text" id="yearLevel">
+            </div>
+
+            <div>
+                <label>Email:</label>
+                <input type="text" id="email">
+            </div>
+
+            <div>
+                <button type="edit" id="edit">Edit</button>
+            </div>
+
+            <div class="sidebar">
+                <div class="flex-container" style="display: flex; align-items: center;">
+                    <label>peerAdvise</label>
+                    <label>Student</label>
+                </div>
+                <a href="connectStudent.html">Connect</a>
+                <a href="appointmentStudent.html">Appointments</a>
+                <a href="index.html">Log Out</a>
+            </div>
+    </div>
+    </form>
+
+
+
+
+    <!-- <script>
+        // Get the form and the submit button
+        var form = document.getElementById("form");
+        var submit = document.getElementById("submit");
+
+        // Initialize Firebase
+        var firebaseConfig = {
+            // your configuration here
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        // Listen for the form's submit event
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get the user's input
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var yearLevel = document.getElementById("yearLevel").value;
+            var studentId = document.getElementById("studentId").value;
+
+            // Get the current user
+            var user = firebase.auth().currentUser;
+
+            if (user) {
+                // Save the user's information to Firestore
+                db.collection("users").doc(user.uid).set({
+                    name: name,
+                    email: email,
+                    yearLevel: yearLevel,
+                    studentId: studentId
+                }).then(function () {
+                    console.log("User information saved!");
+                }).catch(function (error) {
+                    console.error("Error saving user information: ", error);
+                });
+            } else {
+                // The user is not signed in, redirect to the login page
+                window.location.href = "index.html";
+            }
+        });
+    </script> -->
+</body>
+
+</html>
