@@ -16,6 +16,11 @@ The peerAdvice concept provides exactly that in a peer-to-peer connection with s
 
 ## Installation Instructions
 
+- Run `python -m pip install -Ur requirements.txt` (preferably inside a virtual env)
+- Create a PostgreSQL database
+  - Add the two tables in [`setup.sql`](setup.sql)
+  - Edit the database connection URI in [`.env.example`](.env.example) and rename the file to `.env`
+- Run `python server.py` to run the app!
 
 ## Challenges
 **Feature management:**
