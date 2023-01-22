@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 def get_db_connection():
-    conn = psycopg2.connect(os.environ('DATABASE_URL'))
+    conn = psycopg2.connect(os.environ.get('DATABASE_URL'))
     return conn
 
 # immediately when you get to this domain
@@ -24,15 +24,14 @@ def getAdvisor():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur.execute('SELECT * FROM advisors WHERE uid = %s', uid)
-    try:
-        data = cur.fetchone()
-    except:
-        # error
-        pass
+    cur.execute('SELECT * FROM advisors WHERE uid = %s', (uid,))
+    data = cur.fetchone()
 
     cur.close()
     conn.close()
+
+    if not data:
+        return 'bad request!', 400
 
     response = jsonify({
         "uid": data[0],
@@ -54,12 +53,9 @@ def getAllAdvisors():
     conn = get_db_connection()
     cur = conn.cursor()
 
+
     cur.execute('SELECT * FROM advisors')
-    try:
-        data = cur.fetchall()
-    except:
-        # error
-        pass
+    data = cur.fetchone() or []
 
     cur.close()
     conn.close()
@@ -78,15 +74,14 @@ def getStudent():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur.execute('SELECT * FROM students WHERE uid = %s', uid)
-    try:
-        data = cur.fetchone()
-    except:
-        # error
-        pass
+    cur.execute('SELECT * FROM students WHERE uid = %s', (uid,))
+    data = cur.fetchone()
 
     cur.close()
     conn.close()
+
+    if not data:
+        return 'bad request', 400
 
     response = jsonify({
         "uid": data[0],
