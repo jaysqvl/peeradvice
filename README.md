@@ -6,10 +6,10 @@ Couldn't find what you were looking for on the UBC webpage or with UBC advisors?
 The peerAdvice concept provides exactly that in a peer-to-peer connection with someone who truly understands you.
 
 Key Implementation Features:
-*Google Authentication Deployed Using FireBase
-*PostgreSQL User Database
-*Flask Back-end
-*React Front-end (Coming Soon)
+* Google Authentication Deployed Using FireBase
+* PostgreSQL User Database
+* Flask Back-end
+* React Front-end (Coming Soon)
 
 ## How it works
 1. Sign-up using google-authentication
