@@ -8,7 +8,7 @@ The peerAdvice concept provides exactly that in a peer-to-peer connection with s
 **Implemented Features:**
 * Google Authentication Deployed Using FireBase
 * PostgreSQL User Database
-* Flask Back-end
+* Fully Functioning Flask Back-end
 * React Front-end (Coming Soon)
 
 ## How it works
