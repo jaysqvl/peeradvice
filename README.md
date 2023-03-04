@@ -9,6 +9,7 @@ The peerAdvice concept provides exactly that in a peer-to-peer connection with s
 * Google Authentication Deployed Using FireBase
 * PostgreSQL User Database
 * Fully Functioning Flask Back-end
+* Calendly API for client-to-advisor booking
 * React Front-end (Coming Soon)
 
 ## How it works
