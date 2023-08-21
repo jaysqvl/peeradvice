@@ -19,8 +19,9 @@ The peerAdvice concept provides exactly that in a peer-to-peer connection with s
 4. Meet-up and discuss!
 
 ## Demonstration
-[![WATCH HERE]](https://youtu.be/_7WZNNuexCQ)
+[![WATCH THE FULL THING HERE]](https://youtu.be/_7WZNNuexCQ)
 
+![peerAdvice](https://github.com/jaysqvl/peeradvice/blob/main/demo_media/peeradvice.gif?raw=true)
 
 ## Installation Instructions
 
