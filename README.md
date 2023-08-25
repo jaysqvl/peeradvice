@@ -5,6 +5,10 @@ Couldn't find what you were looking for on the UBC webpage or with UBC advisors?
 
 The peerAdvice concept provides exactly that in a peer-to-peer connection with someone who truly understands you.
 
+## Demonstration
+[![WATCH THE FULL THING HERE]](https://youtu.be/_7WZNNuexCQ)
+![peerAdvice](https://github.com/jaysqvl/peeradvice/blob/main/demo_media/peeradvice.gif?raw=true)
+
 **Implemented Features:**
 * Google Authentication Deployed Using FireBase
 * PostgreSQL User Database
@@ -17,11 +21,6 @@ The peerAdvice concept provides exactly that in a peer-to-peer connection with s
 2. Check out the list of all available advisors and their area of expertise
 3. Schedule an appointment with Calendly
 4. Meet-up and discuss!
-
-## Demonstration
-[![WATCH THE FULL THING HERE]](https://youtu.be/_7WZNNuexCQ)
-
-![peerAdvice](https://github.com/jaysqvl/peeradvice/blob/main/demo_media/peeradvice.gif?raw=true)
 
 ## Installation Instructions
 
