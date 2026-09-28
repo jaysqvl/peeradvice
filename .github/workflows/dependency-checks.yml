@@ -43,7 +43,8 @@ jobs:
       - name: Install libpq build headers
         run: sudo apt-get update && sudo apt-get install --yes libpq-dev
       - name: Install the hashed dependency tree
-        run: python -m pip install --require-hashes --only-binary=:all: --no-binary=psycopg2 -r requirements.lock
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: --no-binary=psycopg2 -r requirements.lock
       - name: Check dependency consistency
         run: python -m pip check
       - name: Audit the hashed application dependency tree
