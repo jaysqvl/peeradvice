@@ -1,0 +1,56 @@
+name: Dependency Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.12"]
+    services:
+      postgres:
+        image: postgres:17@sha256:d74eeac9a635390a49bc21bd49fccd973de707e2a53a76ac49b552b8712ec46f
+        env:
+          POSTGRES_DB: peeradvice_dependency_tests
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: peeradvice-tests-only
+        ports:
+          - "127.0.0.1:5432:5432"
+        options: >-
+          --health-cmd "pg_isready -U postgres -d peeradvice_dependency_tests"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      TEST_DATABASE_URL: postgresql://postgres:peeradvice-tests-only@127.0.0.1:5432/peeradvice_dependency_tests
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - name: Install libpq build headers
+        run: sudo apt-get update && sudo apt-get install --yes libpq-dev
+      - name: Install the hashed dependency tree
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: --no-binary=psycopg2 -r requirements.lock
+      - name: Check dependency consistency
+        run: python -m pip check
+      - name: Audit the hashed application dependency tree
+        run: |
+          python -m venv "$RUNNER_TEMP/dependency-audit"
+          "$RUNNER_TEMP/dependency-audit/bin/python" -m pip install --only-binary=:all: pip-audit==2.10.1
+          "$RUNNER_TEMP/dependency-audit/bin/python" -m pip_audit -r requirements.lock --require-hashes --no-deps --disable-pip
+      - name: Exercise real PostgreSQL and Flask route contracts
+        run: python -m unittest discover -s tests -v

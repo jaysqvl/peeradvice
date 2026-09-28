@@ -24,11 +24,20 @@ The peerAdvice concept provides exactly that in a peer-to-peer connection with s
 
 ## Installation Instructions
 
-- Run `python -m pip install -Ur requirements.txt` (preferably inside a virtual env)
+- Use Python 3.10 or newer (CI tests 3.10 and 3.12) and PostgreSQL. Installing the existing `psycopg2` driver from source also needs a C compiler and libpq development headers.
+- Run `python -m pip install --require-hashes --only-binary=:all: --no-binary=psycopg2 -r requirements.lock` inside a virtual environment.
 - Create a PostgreSQL database
   - Add the two tables in [`setup.sql`](setup.sql)
   - Edit the database connection URI in [`.env.example`](.env.example) and rename the file to `.env`
 - Run `python server.py` to run the app!
+
+### Dependency verification
+
+CI uses a disposable PostgreSQL database and runs `python -m unittest discover -s tests -v` against the real Flask routes, Jinja templates, SQL statements, and psycopg2 driver. Tests refuse a missing, non-loopback, or non-test `TEST_DATABASE_URL`; never point them at application data. The test database must be named `peeradvice_dependency_tests`.
+
+For local testing, create that empty database and set a loopback `TEST_DATABASE_URL` before running the test command. Tests recreate the two tables from `setup.sql` and truncate them between cases. They verify profile creation/read/update, redirects, advisor listing, HTML escaping, and CORS behavior, not live Firebase login or Calendly bookings.
+
+`requirements.txt` pins direct dependencies; `requirements.lock` pins and hashes their full tree. With libpq build headers available, regenerate the lock with `uv pip compile requirements.txt --python-version 3.10 --generate-hashes --output-file requirements.lock`, then verify both CI runtimes.
 
 ## Challenges
 **Feature management:**
